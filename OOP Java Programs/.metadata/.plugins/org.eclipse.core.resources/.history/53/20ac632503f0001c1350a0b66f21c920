@@ -1,0 +1,145 @@
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+public class GUI extends JFrame {
+	
+	JPanel name;
+	JPanel email;
+	
+	JLabel firstName;
+	JLabel lastName;
+	JLabel title;
+	JLabel nickName;
+	JLabel format;
+	
+	JTextField firstNameTF;
+	JTextField lastNameTF;
+	JTextField titleTF;
+	JTextField nickNameTF;
+	
+	JComboBox formatList;
+	
+	String[] combo = {"item 1", "item 2", "item 3", "item 4"};
+	
+	JLabel emailAddress;
+	JTextField emailTF;
+	JLabel mailFormat;
+	JButton add;
+	JRadioButton html = new JRadioButton("HTML");
+	JRadioButton pt = new JRadioButton("Plain Text");
+	JRadioButton custom = new JRadioButton("Custom");
+	ButtonGroup htmlEtc;
+	
+	JButton ok = new JButton("OK");
+	JButton cancel = new JButton("Cancel");
+	
+	ActionHandler actionHandle = new ActionHandler();
+	
+	
+	public GUI() {		
+		name = new JPanel();
+		email = new JPanel();
+		
+		firstName = new JLabel("First Name: ");
+		firstNameTF = new JTextField(5);
+		lastName = new JLabel("Last Name: ");
+		lastNameTF = new JTextField(5);
+		title= new JLabel("Title: ");
+		titleTF = new JTextField(5);
+		nickName = new JLabel("Nickname: ");
+		nickNameTF = new JTextField(5);
+		
+		format = new JLabel("Format: ");
+		formatList = new JComboBox(combo);
+		
+		emailAddress = new JLabel("E-mail Address: ");
+		emailTF = new JTextField(5);
+		add = new JButton("Add");
+		mailFormat = new JLabel("Mail Format: ");
+		htmlEtc = new ButtonGroup();
+		
+		htmlEtc.add(html);
+		htmlEtc.add(pt);
+		htmlEtc.add(custom);
+		
+		email.add(emailAddress);
+		email.add(emailTF);
+		email.add(add);
+		email.add(mailFormat);
+		email.add(html);
+		email.add(pt);
+		email.add(custom);
+		email.setLayout(new FlowLayout());
+		
+		
+		name.add(firstName);
+		name.add(firstNameTF);
+		name.add(lastName);
+		name.add(lastNameTF);
+		name.add(title);
+		name.add(titleTF);
+		name.add(nickName);
+		name.add(nickNameTF);
+		name.add(format);
+		name.add(formatList);
+		name.setBounds(100, 100,10,10);
+		name.setLayout(new FlowLayout());
+		
+		ok.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(firstNameTF.getText() == "")
+					lastNameTF.setText("hello");
+				
+			}
+			
+		});
+		
+		add(name);
+		add(email);
+		add(ok);
+		add(cancel);
+		
+		
+		setLayout(new FlowLayout());
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		setSize(1000, 500);
+	}
+
+	public static void main(String[] args) {
+		new GUI();
+
+	}
+	
+	private class ActionHandler implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(e.getSource() == ok) {
+				if(firstNameTF.getText() == "") {
+					JOptionPane.showMessageDialog(null, "Text Field names should be filled", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Exiting", "Exit", JOptionPane.PLAIN_MESSAGE);
+				}
+			}
+			
+		}
+		
+	}
+
+}

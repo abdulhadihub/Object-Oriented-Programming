@@ -1,0 +1,13 @@
+
+public class Test {
+
+	public static void main(String[] args) {
+		Person[] institute = new Person[4];
+		
+		Student student1 = new Student("ali", "taj", "CS", 2, 90000);
+		Student student2 = new Student("Farhan", "taj", "CS", 2, 90000);
+		Staff staff1 = new Staff("Matee", "Kamsats", "COMSATS", 5000);
+		Staff staff1 = new Staff("Faraz", "Lahore", "COMSATS", 500000);
+	}
+
+}
